@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        h1{
+            position: absolute;
+            width: 100%;
+            bottom: 20px;
+            text-align: center;
+            color: white
+        }
+        /* Water EFFECT */
+        @import url('https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Poppins:wght@20000&family=Ubuntu:wght@300&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins' , sans-serif;
+        }
+
+        .main_body{
+            margin-top: 15%;
+            margin-left: 40%;
+            margin-right: 40%;
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            align-items: center;
+
+        }
+        .content{
+            position: relative;
+        }
+        .content h2{
+            position: absolute;
+            transform: translate(-50% , -50%);
+            font-size: 12em;
+        }
+        .content h2:nth-child(1){
+            color: transparent;
+            -webkit-text-stroke: 1px #03a9f4;
+        }
+        .content h2:nth-child(2){
+            color: #03a9f4;
+            animation: animate 4s ease-in-out infinite;
+        }
+        @keyframes animate{
+            0%,100%{
+                clip-path: polygon(0 43%, 14% 38%, 26% 43%, 36% 55%, 49% 62%, 60% 61%, 73% 58%, 82% 54%, 93% 51%, 100% 50%, 99% 99%, 1% 99%);
+            }
+            50%{
+                clip-path: polygon(0 62%, 15% 60%, 28% 63%, 32% 68%, 46% 68%, 61% 63%, 68% 56%, 76% 47%, 88% 40%, 100% 43%, 99% 99%, 1% 99%);
+            }
+        }
+        @keyframes animate{
+            0%,100%{
+                clip-path: polygon(0 43%, 14% 38%, 26% 43%, 36% 55%, 49% 62%, 60% 61%, 73% 58%, 82% 54%, 93% 51%, 100% 50%, 99% 99%, 1% 99%);
+            }
+            50%{
+                clip-path: polygon(0 62%, 15% 60%, 28% 63%, 32% 68%, 46% 68%, 61% 63%, 68% 56%, 76% 47%, 88% 40%, 100% 43%, 99% 99%, 1% 99%);
+            }
+        }
+        /* RESPONSIVE */
+        @media only screen and (max-width : 870px){
+            .content h2{
+                font-size: 8em;
+            }
+        }
+        @media only screen and (max-width : 600px){
+            .content h2{
+                font-size: 4em;
+            }
+        }
+        @media only screen and (max-width: 326px){
+            .content h2{
+                font-size: 3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main_body">
+        <div class="content">
+            <h2>404</h2>
+            <h2>404</h2>
+        </div>
+    </div>
+    <h1>{{text}}</h1>
+</body>
+</html>

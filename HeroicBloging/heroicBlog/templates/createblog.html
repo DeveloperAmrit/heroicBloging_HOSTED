@@ -1,0 +1,108 @@
+{% extends 'basic.html'%}
+{% block title %}Create Blog{% endblock %}
+
+{% block body %}
+<div class="createBlogBox">
+    <div class="createBlogFormBox">
+        {% csrf_token %}
+        <form action="/createBlog" class="createBlogForm" method="POST" enctype="multipart/form-data"
+            class="createBlogForm">
+            {% csrf_token %}
+            <div class="blogDiv1 blogDiv">
+                <div class="blogTitleIn">
+                    <h1>
+                        <input type="text" name="blogTitle" id="blogTitleIn" placeholder="Blog Title" maxlength="400" spellcheck="true">
+                    </h1>
+                </div>
+                <textarea name="description" id="blogDescription" class="createBlogTextarea" cols="30" rows="5"
+                    maxlength="1900" placeholder="Description of Blog" spellcheck="true"></textarea>
+            </div>
+            <div class="blogDiv2 blogDiv">
+                <div style="width: 100%;">
+                    <input type="text" name="headingPara1" class="createBlogHeadingInput" placeholder="Heading (if any)" spellcheck="true">
+                    <textarea name="para1" id="blogPara1" class="createBlogTextarea" cols="20" rows="10" maxlength="1000000"
+                    placeholder="Paragraph 1" spellcheck="true"></textarea>
+                </div>
+                <input type="file" id="mainImage" name="mainImage" class="inputBlogImage" onchange="loadFile1(event)"
+                    placeholder="Image 1" multiple
+                    accept="image/bmp,.bmp,image/jpeg,.jpg,.jpeg,image/png,.png,image/webp,.webp,image/avif,image/x-icon,.ico,.cur,image/svg+xml,.svg,image/tiff,.tif,.tiff" />
+            </div>
+            <div class="blogDiv3 blogDiv">
+                <div class="blogSubject blogSubject1">
+                    <input type="file" id="subImage1" name="subImage1" class="inputBlogImage inputBlogImageD"
+                        onchange="loadFile2(event)" placeholder="Image 1" multiple
+                        accept="image/bmp,.bmp,image/jpeg,.jpg,.jpeg,image/png,.png,image/webp,.webp,image/avif,image/x-icon,.ico,.cur,image/svg+xml,.svg,image/tiff,.tif,.tiff" />
+                    <div>
+                        <input type="text" name="headingPara2" class="createBlogHeadingInput" placeholder="Heading (if any)" spellcheck="true">
+                        <textarea name="para2" id="blogPara2" class="createBlogTextarea" cols="30" rows="10"
+                            maxlength="100000" placeholder="Paragraph for Subject 1" spellcheck="true"></textarea>
+                    </div>
+                </div>
+                <div class="blogSubject blogSubject2">
+                    <input type="file" id="subImage2" name="subImage2" class="inputBlogImage inputBlogImageD"
+                        onchange="loadFile3(event)" placeholder="Image 2" multiple
+                        accept="image/bmp,.bmp,image/jpeg,.jpg,.jpeg,image/png,.png,image/webp,.webp,image/avif,image/x-icon,.ico,.cur,image/svg+xml,.svg,image/tiff,.tif,.tiff" />
+                    <div>
+                        <input type="text" name="headingPara3" class="createBlogHeadingInput" placeholder="Heading (if any)" spellcheck="true">
+                        <textarea name="para3" id="blogPara2" class="createBlogTextarea" cols="30" rows="10"
+                            maxlength="100000" placeholder="Paragraph for Subject 2" spellcheck="true"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="blogDiv4 blogDiv">
+                <input type="text" name="headingPara4" class="createBlogHeadingInput" placeholder="Heading (if any)" spellcheck="true">
+                <textarea name="para4" id="blogPara1" class="createBlogTextarea" cols="30" rows="10" maxlength="1000000"
+                    placeholder="Paragraph 4" spellcheck="true"></textarea>
+            </div>
+            Category:
+            <br>
+            <select name="categories" id="blogCategories">
+                <option value='General'>General </option>
+                <option value='Mathematics'>Mathematics </option>
+                <option value='Science'>Science </option>
+                <option value='Socialscience'>Socialscience </option>
+                <option value='Commerce'>Commerce </option>
+                <option value='Computer'>Computer </option>
+                <option value='Coding'>Coding </option>
+                <option value='English'>English </option>
+                <option value='Hindi'>Hindi </option>
+                <option value='Sports'>Sports </option>
+                <option value='Health'>Health </option>
+                <option value='Food'>Food </option>
+                <option value='Entertainment'>Entertainment </option>
+                <option value='Other'>Other </option>
+            </select>
+            <br><br>
+            Creator:
+            <input type="text" name="creator" id="creator" maxlength="100"/> <br>
+            <div class="createBlogBtnBox">
+                {% csrf_token %}
+                <button type="reset" class="btn resetBtn">Reset</button>
+                <button type="submit" class="btn submitBtn">Submit</button>
+            </div>
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+<script>
+    let image1 = document.getElementById('mainImage')
+    let image2 = document.getElementById('subImage1')
+    let image3 = document.getElementById('subImage2')
+
+    var loadFile1 = function (event) {
+        image1.style.background = `url('${URL.createObjectURL(event.target.files[0])}')`;
+        image1.style.webkitBackgroundSize = 'contain'
+        image1.style.webkitBackgroundOrigin = 'center'
+    }
+    var loadFile2 = function (event) {
+        image2.style.background = `url('${URL.createObjectURL(event.target.files[0])}')`;
+        image2.style.webkitBackgroundSize = 'contain'
+        image2.style.webkitBackgroundOrigin = 'center'
+    }
+    var loadFile3 = function (event) {
+        image3.style.background = `url('${URL.createObjectURL(event.target.files[0])}')`;
+        image3.style.webkitBackgroundSize = 'contain'
+        image3.style.webkitBackgroundOrigin = 'center'
+    }
+</script>
+{% endblock %}

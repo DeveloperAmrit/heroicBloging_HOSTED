@@ -1,0 +1,509 @@
+{% extends 'basic.html'%}
+{% load static %}
+{% block title %} {{title}} {% endblock %}
+{% block css %}{% endblock %}
+{% block afterBody %} 
+<div class="fixNavBox">
+    <a href="/creatingBlog">
+    <div class="fixNav circle">
+        <i class='bx bx-plus-circle' style='color:#ffa500' ></i>
+    </div>
+    </a>
+    <span class="fixNavText">New Blog</span>
+</div>
+{% if myBlog %}
+<div class="fixNavBox" style="left: 10px;">
+    <a href="/deletingBlog">
+    <div class="fixNav circle">
+        <i class='bx bx-trash' style='color:#ffa500'  ></i>
+    </div>
+    </a>
+    <span class="fixNavText">Delete Blogs</span>
+</div>
+{% endif %}
+{% endblock %}
+{% block header%}
+<!-- HEADER -->
+<div class="heading order_box_hider" id="heading">
+    <div class="image_slider">
+        <img src="{% static 'science_blog.jpg' %}" alt="" class="slide_img first_img" id="first_slide">
+        <img src="{% static 'maths_blogging.jpg' %}" alt="" class="slide_img">
+        <img src="{% static 'commerce_blogging.jpg' %}" alt="" class="slide_img">
+        <img src="{% static 'food_blogging.jpg' %}" alt="" class="slide_img">
+    </div>
+    <div class="heading_text">
+        <h1 class="heading_text_content">Welcome to the world of blogging</h1>
+        <h2 class="heading_text_content">Get best blogs</h2>
+        <div class="head_icon_box">
+            <div class="head_icon head_icon1">
+                <img src="{% static 'typing.jpg' %}" alt="" class="head_icon_icon">
+                <span>Start blogging</span>
+            </div>
+            <div class="head_icon head_icon1" style="background-color: rgb(155, 207, 228) ;">
+                <img src="{% static 'knowledge.jpeg' %}" alt="" class="head_icon_icon">
+                <span>Share knowledge</span>
+            </div>
+            <div class="head_icon head_icon1" style="background-color: rgb(39, 218, 179) ;">
+                <img src="{% static 'solve_problems.jpg' %}" alt="" class="head_icon_icon">
+                <span>Solve problems</span>
+            </div>
+            <div class="head_icon head_icon1" style="background-color: rgb(212, 212, 212) ;">
+                <img src="{% static 'gain_popularity.jpg' %}" alt="" class="head_icon_icon">
+                <span>Gain popularity</span>
+            </div>
+        </div>
+        <p class="heading_para">Blog is a popular Web 2.0 application, which is rapidly growing with millions of users across the globe. Before entering the educational realm, blogs were mainly used for social communication that connects people to discuss some common themes such as businesses, entertainment, or any general topics.</p>
+    </div>
+</div>
+{% endblock %}
+{% block body %}
+<div class="super_main_body order_box_hider">
+    <div class="main_body">
+        <div class="conav_box" id="conav_box">
+            <div class="conav" id="conavbar">
+                {% for i in blogCategories|slice:"0:" %}
+                <a class="conav_li">{{i}}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="main_grid_box" id="main_grid_box">
+            <div class="main_grid">
+                <div class="grid grid1">
+                    {% for i in generalBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                        <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button type="submit" class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame" >{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid2">
+                    {% for i in mathematicsBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid3">
+                    {% for i in scienceBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid4">
+                    {% for i in socialscienceBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid5">
+                    {% for i in commerceBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid6">
+                    {% for i in computerBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid7">
+                    {% for i in codingBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid8">
+                    {% for i in englishBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid9">
+                    {% for i in hindiBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid10">
+                    {% for i in sportsBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid11">
+                    {% for i in healthBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid12">
+                    {% for i in foodBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid13">
+                    {% for i in entertainmentBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+                <div class="grid grid14">
+                    {% for i in otherBlogs|slice:"0:" %}
+                    <form action="/showBlog" class="grid_content">
+                        <input type="text" id="blog_id" name="blog_id" value="{{i.blog_title}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_des" name="blog_des" value="{{i.description}}" class="blog_passway"
+                            readonly>
+                        <input type="text" id="blog_creator" name="blog_creator" value="{{i.creator}}"
+                            class="blog_passway" readonly>
+                                                    <input type="text" id="user" name="user" value="{{i.user}}"
+                            class="blog_passway" readonly>
+                        <button class="blogShowBtn">
+                            <div class="creatorTag">
+                                {{i.creator}} / {{i.user}}
+                            </div>
+                            <div class="grid_content grid_content1">
+                                <img src="/media/{{i.image}}" alt="" class="product_img"><br>
+                                <div class="about_product">
+                                    <h2 class="product_name">{{i.blog_title}}</h2>
+                                    <p class="blogDescriptionFrame">{{i.description}}</p>
+                                </div>
+                            </div>
+                        </button>
+                    </form>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer" id="footer">
+    <p class="footer_text">
+        Thanks for visiting. <br><br>
+        We will feel good if you feedback. <br>
+        Please feedback for improvement.
+        <br><br>
+        Visit again
+    </p>
+    <div class="form">
+        Please feedback
+        <form action="/feedback" style="margin-top: 4%;">
+            Name:<input type="text" name="feedback_name" class="inputer">
+            E-mail: <input type="email" name="feedback_email" class="inputer">
+            Message: <input type="text" name="feedback_message" class="inputer">
+            <button class="submit_btn">Submit</button>
+        </form>
+    </div>
+</footer>
+<div class="ending">
+    &copy; Heroic Amrit
+</div>
+<script>
+    let conav_btns = document.getElementsByClassName('conav_li')
+    let grids = document.getElementsByClassName('grid')
+    setTimeout(() => {
+        for (let l = 1; l < grids.length; l++) {
+            let current_grid = grids.item(l)
+            current_grid.style.display = 'none';
+        }
+    }, 0);
+    for (let i = 0; i < conav_btns.length; i++) {
+        let k = conav_btns.item(i)
+        k.addEventListener('mousedown', function switchGrid() {
+            let current_btn = conav_btns.item(i)
+            current_btn.style.background = '#f76a88';
+            for (let a = 0; a < conav_btns.length; a++) {
+                if (a == i) {
+                    let usefull_grid = grids.item(a)
+                    usefull_grid.style.display = 'grid';
+                }
+                else {
+                    let useless_btns = conav_btns.item(a)
+                    let useless_grids = grids.item(a)
+                    useless_grids.style.display = 'none';
+                    useless_btns.style.background = '#454779';
+                }
+            }
+        })
+    }
+</script>
+<script>
+    (function () {
+        function scrollHorizontally(e) {
+            e = window.event || e;
+            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+            document.getElementById('conav_box').scrollLeft -= (delta * 240); // Multiplied by 40
+            e.preventDefault();
+        }
+        if (document.getElementById('conav_box').addEventListener) {
+            // IE9, Chrome, Safari, Opera
+            document.getElementById('conav_box').addEventListener('mousewheel', scrollHorizontally, false);
+            // Firefox
+            document.getElementById('conav_box').addEventListener('DOMMouseScroll', scrollHorizontally, false);
+        } else {
+            // IE 6/7/8
+            document.getElementById('conav_box').attachEvent('onmousewheel', scrollHorizontally);
+        }
+    })();
+</script>
+
+{% endblock %}

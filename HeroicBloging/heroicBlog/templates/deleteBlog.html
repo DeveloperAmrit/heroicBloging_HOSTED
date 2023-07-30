@@ -1,0 +1,30 @@
+{% extends 'basic.html' %}
+{% block title %}Delete Blogs {% endblock %}
+{% block body %}
+<div class="myBlogsListBox">
+    <form action="/deleteBlogs" class="myBlogsList">
+        <table>
+            <caption> Choose blogs to delete</caption>
+            <tr>
+                <th>Checkbox</th>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+            {% for i in allBlogs|slice:"0:" %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="checks[]" value="{{i.description}}" class="deleteBlogCheckbox" id="checkbox">
+                </td>
+                <td>
+                    {{i.blog_title}} 
+                </td>
+                <td>
+                    {{i.description}} 
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit" class="submit_btn">Submit</button>
+    </form>
+</div>
+{% endblock %}
