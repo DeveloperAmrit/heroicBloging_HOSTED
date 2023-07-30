@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <title>Foody | Signup </title>
+    <style>
+        
+        body {
+            background-color: #242582;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-size: larger;
+        }
+
+        .signup_body {
+            width: 400px;
+            background-color: #242582;
+        }
+
+        form {
+            border: 2px solid gold;
+            border-radius: 6px;
+            padding: 40px;
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        .normal_btn {
+            width: 60%;
+            margin-top: 5%;
+            margin-left: 18%;
+            font-size: large;
+            color: white;
+            height: 50px;
+            background: repeating-linear-gradient(to right, rgb(109, 2, 248), rgb(89, 14, 228));
+            border: 2px solid pink;
+            border-radius: 12px;
+        }
+        .normal_btn:hover{
+            cursor: pointer;
+        }
+        #show_password{
+            width: auto;
+        }
+        .container{
+            display: grid;
+            grid-template-columns: 40fr 1fr;
+            grid-gap: 10px;
+        }
+        input{
+            color: rgb(151, 151, 151);
+        }
+        /* RESPONSIVE */
+        @media only screen and (max-width: 845px ){
+            body{
+                justify-content: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+    <!-- <form action="/logout/">
+        {% csrf_token %}
+        <input type="submit" value="Logout" href="" class="normal_btn">
+    </form> -->
+    <div class="signup_body">
+        <div class="signup_box">
+            Do not have a account? Signup here
+            <form action="/signin">
+                Username: <input type="text" id="user_name" name="name" maxlength="100" value="Enter a unique username without space" required>
+                E-mail: <input type="email" name="email" id="user_email" required>
+                Password:
+                <div class="container">
+                    <input type="text" name="password" id="user_password" value="Have a strong password" required>
+                    <button type="button" id="show_password" ><i class='bx bxs-hide'></i></button>
+                </div>
+                <input type="submit" href="" value="Signup" id="signup_submit_btn" class="normal_btn">
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    let b = 0;
+    let c = 0 ;
+    let user_name = document.getElementById('user_name')
+    let user_password = document.getElementById('user_password')
+    let inputs = document.getElementsByTagName('input')
+    user_name.addEventListener('click',function ready(){
+    if(b == 0){
+        user_name.value = '';
+        user_name.style.color = 'black';
+        b++;
+    }
+    })
+    user_password.addEventListener('click', function ready(){
+    if(c == 0){
+        user_password.value = '';
+        user_password.type = 'password';
+        user_password.style.color = 'black'
+        c++;
+    }
+    })
+    let password_btn = document.getElementById(('show_password'))
+    let a = 0;
+    password_btn.addEventListener('click',function show_password(){
+        if(a == 1){
+            user_password.type = 'password'
+            password_btn.innerHTML = "<i class='bx bxs-hide'></i>";
+            a--;
+
+        }
+        else if(a ==0){
+            user_password.type = 'text'
+            password_btn.innerHTML = "<i class='bx bxs-show' ></i>";
+            a++;
+
+        }
+    })
+</script>
+
+</html>

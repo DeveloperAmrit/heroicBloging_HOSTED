@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foody | Login</title>
+    <style>
+            body {
+            background-color: black;
+            height: 100vh;
+            color: white;
+            font-size: larger;          
+        }
+        .login_body{
+            width: 400px;
+            margin-left: 20%;
+        }
+
+        form {
+            border: 2px solid gold;
+            border-radius: 6px;
+            padding: 40px;
+            margin-top: 160px;
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        .normal_btn {
+            width: 60%;
+            margin-top: 5%;
+            margin-left: 18%;
+            font-size: large;
+            color: white;
+            height: 50px;
+            background: repeating-linear-gradient(to right, rgb(109, 2, 248), rgb(89, 14, 228));
+            border: 2px solid pink;
+            border-radius: 12px;
+        }
+        .normal_btn:hover{
+            cursor: pointer;
+        }
+        /* Water EFFECT */
+        @import url('https://fonts.googleapis.com/css2?family=Crafty+Girls&family=Poppins:wght@20000&family=Ubuntu:wght@300&display=swap');
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins' , sans-serif;
+        }
+
+        .main_body{
+            margin-top: 15%;
+            margin-left: 40%;
+            margin-right: 40%;
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            align-items: center;
+
+        }
+        .content{
+            position: relative;
+        }
+        .content h2{
+            position: absolute;
+            transform: translate(-50% , -50%);
+            font-size: 12em;
+        }
+        .content h2:nth-child(1){
+            color: transparent;
+            -webkit-text-stroke: 1px #03a9f4;
+        }
+        .content h2:nth-child(2){
+            color: #03a9f4;
+            animation: animate 4s ease-in-out infinite;
+        }
+        @keyframes animate{
+            0%,100%{
+                clip-path: polygon(0 43%, 14% 38%, 26% 43%, 36% 55%, 49% 62%, 60% 61%, 73% 58%, 82% 54%, 93% 51%, 100% 50%, 99% 99%, 1% 99%);
+            }
+            50%{
+                clip-path: polygon(0 62%, 15% 60%, 28% 63%, 32% 68%, 46% 68%, 61% 63%, 68% 56%, 76% 47%, 88% 40%, 100% 43%, 99% 99%, 1% 99%);
+            }
+        }
+        /* RESPONSIVE */
+        @media only screen and (max-width : 870px){
+            .content h2{
+                font-size: 8em;
+            }
+        }
+        @media only screen and (max-width : 600px){
+            .content h2{
+                font-size: 4em;
+            }
+            .login_body{
+                margin-left: 10%;
+            }
+        }
+        @media only screen and (max-width: 437px){
+            .login_body{
+                width: 300px;
+            }
+        }
+        @media only screen and (max-width: 326px){
+            .login_body{
+                width: 240px;
+            }
+            .content h2{
+                font-size: 3em;
+            }
+        }
+        @media only screen and (max-width: 270px){
+            .login_body{
+                width: 220px;
+                margin-left: 0%;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="main_body">
+        <div class="content">
+            <h2>HEROIC</h2>
+            <h2>HEROIC</h2>
+        </div>
+    </div>
+    <div class="login_body">
+        <div class="container">
+            <form action="/login">
+                Username: <input type="text" id="user_name" name="login_name" required>
+                Password: <input type="password" name="login_password" id="user_password" required>
+                <input type="submit" href="" value="Login" id="login_submit_btn" class="normal_btn">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
